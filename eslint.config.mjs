@@ -94,21 +94,6 @@ export default [
         {
           paths: [
             {
-              name: "@heroui/react",
-              importNames: [
-                "Button",
-                "Checkbox",
-                "CheckboxGroup",
-                "Modal",
-                "ModalHeader",
-                "Radio",
-                "RadioGroup",
-                "Select",
-                "Input",
-              ],
-              message: 'Use the custom Button component from "~/shared/ui".',
-            },
-            {
               name: "react-native",
               importNames: ["Text", "TextProps"],
               message: 'Use from "~/shared/ui" instead.',
