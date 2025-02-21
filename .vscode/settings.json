@@ -1,11 +1,12 @@
 {
-  "cSpell.words": ["gluestack", "nativewind"],
+  "cSpell.words": ["gluestack", "nativewind", "unistyles"],
   "tailwindCSS.experimental.classRegex": [
     [
       "tv\\(([^)(]*(?:\\([^)(]*(?:\\([^)(]*(?:\\([^)(]*\\)[^)(]*)*\\)[^)(]*)*\\)[^)(]*)*)\\)",
-      "\"(.*?)\""
+      "(?:'|\"|`)([^'\"`]*)(?:'|\"|`)"
     ],
-    ["c[nx]\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+    ["c[nx]\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["className:\\s*(?:'|\"|`)([^'\"`]*)(?:'|\"|`)"]
   ],
   "[typescript]": {
     "editor.formatOnSave": false

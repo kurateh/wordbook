@@ -1,12 +1,11 @@
 import { Stack } from "expo-router";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-import { GluestackUIProvider } from "~/providers/gluestack-ui-provider";
-
-import "./global.css";
+import "~/shared/style/unistyles";
 
 function App() {
   return (
-    <GluestackUIProvider mode="light">
+    <GestureHandlerRootView>
       <Stack>
         <Stack.Screen
           name="(tabs)"
@@ -15,7 +14,7 @@ function App() {
           }}
         />
       </Stack>
-    </GluestackUIProvider>
+    </GestureHandlerRootView>
   );
 }
 

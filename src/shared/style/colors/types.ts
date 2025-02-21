@@ -27,14 +27,15 @@ export type BaseColors = {
   content4: ColorScale;
 };
 
-export type ThemeColors = BaseColors & {
-  default: ColorScale;
-  primary: ColorScale;
-  secondary: ColorScale;
-  success: ColorScale;
-  warning: ColorScale;
-  danger: ColorScale;
-};
+export type SemanticColor =
+  | "default"
+  | "primary"
+  | "secondary"
+  | "success"
+  | "warning"
+  | "danger";
+
+export type ThemeColors = BaseColors & Record<SemanticColor, ColorScale>;
 
 export type SemanticBaseColors = {
   light: BaseColors;

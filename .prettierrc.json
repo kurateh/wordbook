@@ -1,11 +1,3 @@
 {
-  "plugins": [
-    "prettier-plugin-tailwindcss",
-    "prettier-plugin-classnames",
-    "prettier-plugin-merge"
-  ],
-  "pluginSearchDirs": ["."],
-  "tailwindFunctions": ["clsx", "cx", "tva"],
-  "customFunctions": ["clsx", "cx", "tva"],
   "printWidth": 80
 }

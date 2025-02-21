@@ -1,10 +1,12 @@
 import { readableColor } from "color2k";
 
+import { constOf } from "~/shared/function";
+
 import { commonColors as common } from "./common";
-import type { ThemeColors, SemanticBaseColors } from "./types";
+import type { ThemeColors } from "./types";
 import { swapColorValues } from "./utils";
 
-const base: SemanticBaseColors = {
+const base = constOf({
   light: {
     background: {
       DEFAULT: "#FFFFFF",
@@ -73,9 +75,9 @@ const base: SemanticBaseColors = {
       foreground: common.zinc[300],
     },
   },
-};
+});
 
-export const themeColorsLight: ThemeColors = {
+export const themeColorsLight = constOf({
   ...base.light,
   default: {
     ...common.zinc,
@@ -107,9 +109,9 @@ export const themeColorsLight: ThemeColors = {
     foreground: common.white,
     DEFAULT: common.red[500],
   },
-};
+}) satisfies ThemeColors;
 
-export const themeColorsDark: ThemeColors = {
+export const themeColorsDark = constOf({
   ...base.dark,
   default: {
     ...swapColorValues(common.zinc),
@@ -141,9 +143,9 @@ export const themeColorsDark: ThemeColors = {
     foreground: common.white,
     DEFAULT: common.red[500],
   },
-};
+}) satisfies ThemeColors;
 
 export const semanticColors = {
   light: themeColorsLight,
   dark: themeColorsDark,
-};
+} as const;

@@ -25,6 +25,7 @@ export default [
       "node_modules/",
       "**/*.json",
       ".storybook/storybook.requires.ts",
+      "expo-env.d.ts",
     ],
   },
   ...compat.extends(),
@@ -107,6 +108,16 @@ export default [
               ],
               message: 'Use the custom Button component from "~/shared/ui".',
             },
+            {
+              name: "react-native",
+              importNames: ["Text", "TextProps"],
+              message: 'Use from "~/shared/ui" instead.',
+            },
+            {
+              name: "react-native",
+              importNames: ["StyleSheet"],
+              message: 'Use from "react-native-unistyles" instead.',
+            },
           ],
         },
       ],
@@ -117,6 +128,7 @@ export default [
       ],
 
       "react/no-unescaped-entities": ["error", { forbid: [">", "}"] }],
+      "no-fallthrough": 0,
     },
   },
   {

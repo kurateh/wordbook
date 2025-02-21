@@ -1,8 +1,9 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useMemo } from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 
 import { words } from "~/pages/WordbookList/data";
+import { Text } from "~/shared/ui";
 
 export default function Word() {
   const { id } = useLocalSearchParams();

@@ -1,5 +1,7 @@
 import type { Preview } from "@storybook/react";
-import { View } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+
+import "~/shared/style/unistyles";
 
 const preview: Preview = {
   parameters: {
@@ -12,9 +14,11 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <View className="mt-20 flex items-center p-2">
+      <GestureHandlerRootView
+        style={{ flex: 1, marginTop: 60, alignItems: "center" }}
+      >
         <Story />
-      </View>
+      </GestureHandlerRootView>
     ),
   ],
 };
