@@ -1,21 +1,9 @@
 {
   "cSpell.words": ["gluestack", "nativewind", "unistyles"],
-  "tailwindCSS.experimental.classRegex": [
-    [
-      "tv\\(([^)(]*(?:\\([^)(]*(?:\\([^)(]*(?:\\([^)(]*\\)[^)(]*)*\\)[^)(]*)*\\)[^)(]*)*)\\)",
-      "(?:'|\"|`)([^'\"`]*)(?:'|\"|`)"
-    ],
-    ["c[nx]\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
-    ["className:\\s*(?:'|\"|`)([^'\"`]*)(?:'|\"|`)"]
-  ],
   "[typescript]": {
     "editor.formatOnSave": false
   },
   "[typescriptreact]": {
     "editor.formatOnSave": false
-  },
-  "tailwindCSS.codeActions": false,
-  "tailwindCSS.validate": false,
-  "tailwindCSS.lint.recommendedVariantOrder": "ignore",
-  "tailwindCSS.hovers": true
+  }
 }
