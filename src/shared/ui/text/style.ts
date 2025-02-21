@@ -15,28 +15,8 @@ export const textStylesheet = createStyleSheet((theme) => ({
       fontFamily: (() => {
         switch (font) {
           case "pretendard":
-            switch (weight) {
-              case "thin":
-                return theme.fonts.pretendard.thin;
-              case "extralight":
-                return theme.fonts.pretendard.extralight;
-              case "light":
-                return theme.fonts.pretendard.light;
-              case "regular":
-                return theme.fonts.pretendard.regular;
-              case "medium":
-                return theme.fonts.pretendard.medium;
-              case "semibold":
-                return theme.fonts.pretendard.semibold;
-              case "bold":
-                return theme.fonts.pretendard.bold;
-              case "extrabold":
-                return theme.fonts.pretendard.extrabold;
-              case "black":
-                return theme.fonts.pretendard.black;
-              default:
-                return undefined;
-            }
+            return theme.fonts.pretendard[weight];
+
           default:
             return undefined;
         }
