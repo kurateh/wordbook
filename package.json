@@ -18,7 +18,10 @@
     "storybook:android": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo run:android"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "moduleNameMapper": {
+      "^lodash-es$": "lodash"
+    }
   },
   "packageManager": "pnpm@9.15.1",
   "dependencies": {

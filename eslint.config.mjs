@@ -98,11 +98,6 @@ export default [
               importNames: ["Text", "TextProps"],
               message: 'Use from "~/shared/ui" instead.',
             },
-            {
-              name: "react-native",
-              importNames: ["StyleSheet"],
-              message: 'Use from "react-native-unistyles" instead.',
-            },
           ],
         },
       ],
