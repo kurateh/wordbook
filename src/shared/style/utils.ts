@@ -39,7 +39,9 @@ export function mapPropsVariants<
   const picked = variantKeys.reduce((acc, key) => {
     // Only include the key in `picked` if it exists in `props`
     if (key in props) {
-      return { ...acc, [key]: props[key] };
+      // eslint-disable-next-line no-param-reassign, @typescript-eslint/no-explicit-any
+      (acc as any)[key] = props[key];
+      return acc;
     } else {
       return acc;
     }
@@ -48,7 +50,11 @@ export function mapPropsVariants<
   if (removeVariantProps) {
     const omitted = Object.keys(props)
       .filter((key) => !variantKeys.includes(key as K))
-      .reduce((acc, key) => ({ ...acc, [key]: props[key as keyof T] }), {});
+      .reduce((acc, key) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-param-reassign
+        (acc as any)[key] = props[key as keyof T];
+        return acc;
+      }, {});
 
     return [omitted, picked] as [Omit<T, K>, Pick<T, K>];
   } else {
