@@ -1,3 +1,7 @@
+import { type ImageStyle, type TextStyle, type ViewStyle } from "react-native";
+
+import { makeOf } from "~/shared/function";
+
 export function mapPropsVariants<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   T extends Record<string, any>,
@@ -51,3 +55,9 @@ export function mapPropsVariants<
     return [props, picked] as [T, Pick<T, K>];
   }
 }
+
+export const viewStyle = makeOf<ViewStyle>();
+
+export const textStyle = makeOf<TextStyle>();
+
+export const imageStyle = makeOf<ImageStyle>();
