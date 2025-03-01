@@ -16,5 +16,5 @@ export const mergeStyleValues = <S extends Style>(
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return { ...acc, ...style } as any;
+    return Object.assign(acc, style) as any;
   }, {}) as unknown as DeterminedStyle<S>;
