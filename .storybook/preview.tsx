@@ -1,8 +1,6 @@
 import type { Preview } from "@storybook/react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-import "~/shared/style/unistyles";
-
 const preview: Preview = {
   parameters: {
     controls: {

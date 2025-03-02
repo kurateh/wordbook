@@ -1,8 +1,6 @@
 import { Stack } from "expo-router";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-import "~/shared/style/unistyles";
-
 function App() {
   return (
     <GestureHandlerRootView>
