@@ -6,3 +6,6 @@ export const values = <O extends object>(obj: O) =>
 
 export const entries = <O extends object>(obj: O) =>
   Object.entries(obj) as [keyof O, O[keyof O]][];
+
+export const fromEntries = <K extends keyof never, V>(entries: [K, V][]) =>
+  Object.fromEntries(entries) as Record<K, V>;
