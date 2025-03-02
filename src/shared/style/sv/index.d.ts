@@ -13,8 +13,10 @@ export type StyleValue<S extends Style = Style> =
   | false
   | StyleValue<S>[];
 
-export type DetermineStyleFromStyleValue<S extends StyleValue> =
-  S extends StyleValue<infer R> ? DeterminedStyle<R> : undefined;
+export type DetermineStyleFromStyleValue<
+  S extends StyleValue,
+  R = Exclude<S, null | undefined | 0 | 0n | false | unknown[]>,
+> = R extends Style ? DeterminedStyle<R> : undefined;
 
 type SVSlots = Record<string, StyleValue> | undefined;
 
@@ -73,7 +75,8 @@ export type SVReturnProps<
   DB extends Style | undefined,
 > = {
   base: DB;
-  slots: (keyof DS)[];
+  slots: DS;
+  slotKeys: DS extends undefined ? undefined : (keyof DS)[];
   variants: V;
   defaultVariants: SVDefaultVariants<V, DS>;
   compoundVariants: SVCompoundVariants<V, DS, DB>;
