@@ -15,6 +15,7 @@ export const sv = (options) => {
   } = options ?? {};
 
   const slotKeys = Object.keys(slots);
+  const isSlotEmpty = isEmpty(slots);
 
   const getSelectedVariantStyles = (variantValues) =>
     Object.entries(variantValues)
@@ -31,7 +32,7 @@ export const sv = (options) => {
       .map((cv) => cv.style);
 
   const component = (props) => {
-    if (isEmpty(variants) && isEmpty(slots)) {
+    if (isEmpty(variants) && isSlotEmpty) {
       return mergeStyleValues(base);
     }
 
@@ -78,7 +79,8 @@ export const sv = (options) => {
   };
 
   component.base = base;
-  component.slots = slotKeys;
+  component.slotKeys = isSlotEmpty ? undefined : slotKeys;
+  component.slots = isSlotEmpty ? undefined : slots;
   component.variants = variants;
   component.compoundVariants = compoundVariants;
   component.defaultVariants = defaultVariants;

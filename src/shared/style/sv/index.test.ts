@@ -284,6 +284,7 @@ describe("sv", () => {
     const {
       base,
       slots,
+      slotKeys,
       compoundVariants,
       defaultVariants,
       variantKeys,
@@ -291,7 +292,8 @@ describe("sv", () => {
     } = simpleStyle;
 
     expect(base).toEqual({ color: "red" });
-    expect(slots).toEqual([]);
+    expect(slots).toEqual(undefined);
+    expect(slotKeys).toEqual(undefined);
     expect(compoundVariants).toEqual([]);
     expect(defaultVariants).toEqual({});
     expect(variantKeys).toEqual([]);
@@ -361,6 +363,7 @@ describe("sv", () => {
     const {
       base: baseComplex,
       slots: slotsComplex,
+      slotKeys: slotKeysComplex,
       compoundVariants: compoundVariantsComplex,
       defaultVariants: defaultVariantsComplex,
       variantKeys: variantKeysComplex,
@@ -368,7 +371,15 @@ describe("sv", () => {
     } = complexStyle;
 
     expect(baseComplex).toEqual(undefined);
-    expect(slotsComplex).toEqual(["base", "button"]);
+    expect(slotsComplex).toEqual({
+      base: {
+        fontSize: 16,
+      },
+      button: {
+        padding: 10,
+      },
+    });
+    expect(slotKeysComplex).toEqual(["base", "button"]);
     expect(compoundVariantsComplex).toEqual([
       {
         color: "blue",
