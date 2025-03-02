@@ -1,43 +1,33 @@
-import { createStyleSheet } from "react-native-unistyles";
-import { match } from "ts-pattern";
+import { entries, fromEntries } from "~/shared/object";
+import { spacing } from "~/shared/style/spacing";
+import { sv, type VariantProps } from "~/shared/style/sv";
+import { viewStyle } from "~/shared/style/utils";
 
-import { type UnionToTuple } from "~/shared/types";
-
-type _SpinnerVariantProps = {
-  size: "sm" | "md" | "lg";
-};
-
-export type SpinnerVariantProps = Partial<_SpinnerVariantProps>;
-
-export const spinnerVariantKeys: UnionToTuple<keyof SpinnerVariantProps> = [
-  "size",
-];
-
-export const spinnerStylesheet = createStyleSheet((theme) => ({
-  wrapper: ({ size }: _SpinnerVariantProps) => {
-    const spacing = match(size)
-      .with("sm", () => theme.spacing[5])
-      .with("md", () => theme.spacing[8])
-      .with("lg", () => theme.spacing[10])
-      .exhaustive();
-
-    return {
-      width: spacing,
-      height: spacing,
-    };
+export const spinnerStyle = sv({
+  slots: {
+    wrapper: viewStyle({}),
+    spinner: viewStyle({}),
   },
-  spinner: ({ size }: _SpinnerVariantProps) => {
-    const spacing = match(size)
-      .with("sm", () => theme.spacing[5])
-      .with("md", () => theme.spacing[8])
-      .with("lg", () => theme.spacing[10])
-      .exhaustive();
-
-    return {
-      width: spacing,
-      height: spacing,
-    };
+  variants: {
+    size: fromEntries(
+      entries({ sm: spacing[5], md: spacing[8], lg: spacing[10] }).map(
+        ([key, space]) => [
+          key,
+          {
+            wrapper: { width: space, height: space },
+            spinner: { width: space, height: space },
+          },
+        ],
+      ),
+    ),
   },
-}));
+  defaultVariants: {
+    size: "md",
+  },
+});
 
-export type SpinnerSlots = keyof ReturnType<typeof spinnerStylesheet>;
+export const spinnerSlotKeys = spinnerStyle.slotKeys;
+
+export type SpinnerSlots = (typeof spinnerSlotKeys)[number];
+
+export type SpinnerVariantProps = VariantProps<typeof spinnerStyle>;
