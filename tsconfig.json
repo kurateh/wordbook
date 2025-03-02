@@ -7,8 +7,7 @@
     },
     "baseUrl": ".",
     "skipLibCheck": true,
-    "jsx": "react-jsx",
-    "declaration": true
+    "jsx": "react-jsx"
   },
   "include": [
     "**/*.ts",

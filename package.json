@@ -23,7 +23,7 @@
       "^lodash-es$": "lodash"
     }
   },
-  "packageManager": "pnpm@9.15.1",
+  "packageManager": "pnpm@10.5.2",
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
     "@faker-js/faker": "^9.5.0",
@@ -85,6 +85,7 @@
     "jest-expo": "~52.0.4",
     "prettier": "^3.4.2",
     "react-test-renderer": "18.3.1",
+    "turbo": "^2.4.4",
     "typescript": "^5.7.3"
   },
   "private": true
