@@ -1,10 +1,10 @@
 import { commonColors, semanticColors } from "./colors";
-import { fonts } from "./fonts";
+import { font } from "./fonts";
 import { radius } from "./radius";
 import { spacing } from "./spacing";
 
 const common = {
-  fonts,
+  fonts: font,
   spacing,
   radius,
 } as const;
