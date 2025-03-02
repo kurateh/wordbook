@@ -1,26 +1,43 @@
-import { createStyleSheet } from "react-native-unistyles";
+import { font, fontWeights, type FontWeight } from "~/shared/style/fonts";
+import { sv, type VariantProps } from "~/shared/style/sv";
+import { textStyle } from "~/shared/style/utils";
 
-import { type Font, type FontWeight } from "~/shared/style/fonts";
-
-type _TextVariants = {
-  font: Font;
-  weight: FontWeight;
-};
-
-export type TextVariants = Partial<_TextVariants>;
-
-export const textStylesheet = createStyleSheet((theme) => ({
-  base: ({ font, weight }: _TextVariants) => {
-    return {
-      fontFamily: (() => {
-        switch (font) {
-          case "pretendard":
-            return theme.fonts.pretendard[weight];
-
-          default:
-            return undefined;
-        }
-      })(),
-    };
+export const textStyles = sv({
+  base: textStyle({}),
+  variants: {
+    font: {
+      pretendard: {
+        fontFamily: font.pretendard.medium,
+      },
+    },
+    weight: {
+      thin: {},
+      extralight: {},
+      light: {},
+      regular: {},
+      medium: {},
+      semibold: {},
+      bold: {},
+      extrabold: {},
+      black: {},
+    } satisfies Record<FontWeight, object>,
   },
-}));
+  defaultVariants: {
+    font: "pretendard",
+    weight: "medium",
+  },
+  compoundVariants: [
+    ...fontWeights.map(
+      (weight) =>
+        ({
+          font: "pretendard",
+          weight,
+          style: {
+            fontFamily: font.pretendard[weight],
+          },
+        }) as const,
+    ),
+  ],
+});
+
+export type TextVariants = VariantProps<typeof textStyles>;

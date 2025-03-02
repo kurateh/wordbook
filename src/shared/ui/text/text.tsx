@@ -1,25 +1,32 @@
-/* eslint-disable no-restricted-imports */
-import { type ElementRef, forwardRef } from "react";
+import { type ElementRef, forwardRef, useMemo } from "react";
 import {
+  // eslint-disable-next-line no-restricted-imports
   Text as TextOrig,
+  // eslint-disable-next-line no-restricted-imports
   type TextProps as TextPropsOrig,
 } from "react-native";
-import { useStyles } from "react-native-unistyles";
 
-import { textStylesheet, type TextVariants } from "./style";
+import { mapPropsVariants } from "~/shared/style/utils";
+
+import { textStyles, type TextVariants } from "./style";
 
 export interface TextProps extends TextPropsOrig, TextVariants {}
 
 export const Text = forwardRef<ElementRef<typeof TextOrig>, TextProps>(
-  ({ style, weight = "medium", font = "pretendard", ...props }, ref) => {
-    const { styles } = useStyles(textStylesheet);
-
-    return (
-      <TextOrig
-        ref={ref}
-        {...props}
-        style={[styles.base({ font, weight }), style]}
-      />
+  (originalProps, ref) => {
+    const [props, variantProps] = mapPropsVariants(
+      originalProps,
+      textStyles.variantKeys,
     );
+
+    const { style, ...otherProps } = props;
+    const { font, weight } = variantProps;
+
+    const baseStyle = useMemo(
+      () => textStyles({ font, weight }),
+      [font, weight],
+    );
+
+    return <TextOrig ref={ref} {...otherProps} style={[baseStyle, style]} />;
   },
 );

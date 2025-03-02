@@ -11,6 +11,18 @@ export type FontWeight =
   | "extrabold"
   | "black";
 
+export const fontWeights = constOf([
+  "thin",
+  "extralight",
+  "light",
+  "regular",
+  "medium",
+  "semibold",
+  "bold",
+  "extrabold",
+  "black",
+] satisfies FontWeight[]);
+
 type FontSet = Record<FontWeight, string>;
 
 const fontSet = makeConstOf<Partial<FontSet>>();
@@ -27,7 +39,7 @@ const pretendard = fontSet({
   black: "PretendardJP-Black",
 });
 
-const size = constOf({
+export const fontSize = constOf({
   xs: "12px", // 0.75rem
   sm: "14px", // 0.875rem
   base: "16px", // 1rem
@@ -42,9 +54,8 @@ const size = constOf({
   "8xl": "96px", // 6rem
 });
 
-export const fonts = {
+export const font = {
   pretendard,
-  size,
 } as const;
 
-export type Font = keyof typeof fonts;
+export type Font = keyof typeof font;
